@@ -1,9 +1,9 @@
 # macOS Dynamics TabViewController
 ### Design thoughts
-I  focused on `NSTabBarViewController` and `NSTableView` to easily help a user skip between lots of data.  But I suspect as this project grew older, I would move to newer U.I. controls like macOS's `Tabbed Windows`.
+I  focused on `NSTabBarViewController` and `NSTableView` to help a user skip between lots of data.  As this project grew older, I would move to newer U.I. controls like macOS's `Tabbed Windows`.
 
 ### Technical baggage
-I originally thought in pure iOS terms. I was constantly trying to port `Classes` I knew well (`UIViewController`, `UITabBarViewController`) to the macOS world (`NSViewController`, `NSTabBarViewController`).  That idea drowned quickly.
+I originally thought in pure iOS terms. I was constantly trying to port `Classes` I knew well (`UIViewController`, `UITabBarViewController`) to the macOS world (`NSViewController`, `NSTabBarViewController`).  That idea drowned quickly.  Just look at the richness of the macOS `NSTableView` control to understand why you can't treat these `Classes` as synonyms of each other.
 
 ### Writing the User Interface
 I wanted to write all of the code. I didn't want `XIB` files or `Storyboards`.  But at some point, you find writing everything is code is hardwork.  macOS is poorly documented compared to iOS.  Small things become slow and cumbersome.  
