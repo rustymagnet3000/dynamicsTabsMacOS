@@ -17,7 +17,6 @@
 		0F9D3C9C22E6FFB800D4801C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0F9D3C9B22E6FFB800D4801C /* Assets.xcassets */; };
 		0F9D3C9F22E6FFB800D4801C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0F9D3C9D22E6FFB800D4801C /* Main.storyboard */; };
 		0F9D3CA922E6FFEB00D4801C /* YDWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F9D3CA822E6FFEB00D4801C /* YDWindow.swift */; };
-		0F9D3CAB22E6FFF300D4801C /* YDGenericVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F9D3CAA22E6FFF300D4801C /* YDGenericVC.swift */; };
 		0F9D3CAF22E7001100D4801C /* YDResultsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F9D3CAE22E7001100D4801C /* YDResultsModel.swift */; };
 /* End PBXBuildFile section */
 
@@ -36,7 +35,6 @@
 		0F9D3CA122E6FFB900D4801C /* dynamicsTabs.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = dynamicsTabs.entitlements; sourceTree = "<group>"; };
 		0F9D3CA722E6FFE000D4801C /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		0F9D3CA822E6FFEB00D4801C /* YDWindow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YDWindow.swift; sourceTree = "<group>"; };
-		0F9D3CAA22E6FFF300D4801C /* YDGenericVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YDGenericVC.swift; sourceTree = "<group>"; };
 		0F9D3CAE22E7001100D4801C /* YDResultsModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YDResultsModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -78,7 +76,6 @@
 				0F442F4A22E7423E00228C18 /* YDplainvc.xib */,
 				0F9D3CA822E6FFEB00D4801C /* YDWindow.swift */,
 				0F9D3C9722E6FFB800D4801C /* YDAppDelegate.swift */,
-				0F9D3CAA22E6FFF300D4801C /* YDGenericVC.swift */,
 				0F442F4122E70E5900228C18 /* YDHomeVC.swift */,
 				0F9D3CAE22E7001100D4801C /* YDResultsModel.swift */,
 				0F9D3C9B22E6FFB800D4801C /* Assets.xcassets */,
@@ -168,7 +165,6 @@
 				0F442F4E22E7596C00228C18 /* YDtabvc.swift in Sources */,
 				0F9D3CA922E6FFEB00D4801C /* YDWindow.swift in Sources */,
 				0F442F5022E75BB500228C18 /* YDidentifiers.swift in Sources */,
-				0F9D3CAB22E6FFF300D4801C /* YDGenericVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

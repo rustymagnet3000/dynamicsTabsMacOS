@@ -18,7 +18,7 @@ class YDHomeVC: NSViewController {
         
         var nTabResults: [YDResultsModel] = []
         let tabvc = YDtabvc(nibName: YDNibIdentifier.ydtabvc, bundle: nil)
-        
+
         nTabResults.append(a)
         nTabResults.append(b)
         nTabResults.append(c)
@@ -27,9 +27,7 @@ class YDHomeVC: NSViewController {
             let vc = YDplainVC(nibName: YDNibIdentifier.ydplainvc, bundle: nil)
             vc.tableViewData = i.logs
             let tabbaritem = NSTabViewItem.init(viewController: vc)
-            tabbaritem.label = i.title
-            tabbaritem.toolTip = "blah tooltip"
-            
+            tabbaritem.label = i.title           
             tabvc.addTabViewItem(tabbaritem)
         }
  

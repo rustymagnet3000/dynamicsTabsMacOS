@@ -8,8 +8,6 @@ class YDWindowController: NSWindowController {
     
     override func windowDidLoad() {
         super.windowDidLoad()
-        
-
         if let ydwindow = window, let screen = window?.screen {
         
             ydwindow.title = "YDWindowController"
