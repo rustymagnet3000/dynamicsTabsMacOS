@@ -1,16 +1,11 @@
 import Foundation
 
-struct YDLog {
-    let lineNo: Int
-    let lineData: String
-}
-
-class YDResultsModel: NSObject {
+struct YDResultsModel {
     
     let title: String
-    let logs: [YDLog]
+    let logs: KeyValuePairs<Int, String>
 
-    init(title: String, logs: [YDLog]) {
+    init(title: String, logs: KeyValuePairs<Int, String>) {
         self.title = title
         self.logs = logs
     }

@@ -4,21 +4,35 @@ class YDHomeVC: NSViewController {
     
     @IBAction func btn_action(_ sender: Any) {
 
-        let a = YDResultsModel(title: "tab a", logs: [YDLog(lineNo: 22, lineData: "giant"), YDLog(lineNo: 44, lineData: "camel")])
-        let b = YDResultsModel(title: "tab b", logs: [YDLog(lineNo: 11, lineData: "brown"), YDLog(lineNo: 22, lineData: "recluse")])
-        let c = YDResultsModel(title: "tab c", logs: [YDLog(lineNo: 1, lineData: "red"), YDLog(lineNo: 2, lineData: "back")])
+        let a = YDResultsModel(title: "scary", logs: [11: "Camel",
+                                                      12: "Wolf",
+                                                      13: "Giant Huntsmen"])
+
+        let b = YDResultsModel(title: "non scary", logs: [1: "Harvestman",
+                                                      13: "Daddy Long Legs",
+                                                      21: "Inchy Wincy"])
+
+        let c = YDResultsModel(title: "killers", logs: [20: "Brasilian Wandering",
+                                                      13: "Shelob",
+                                                      21: "Funnel Web"])
+        
+        var nTabResults: [YDResultsModel] = []
         let tabvc = YDtabvc(nibName: YDNibIdentifier.ydtabvc, bundle: nil)
-        let vc1 = YDplainVC(nibName: YDNibIdentifier.ydplainvc, bundle: nil)
-        //vc1.tableViewData = a.logs
-        let tabbaritem1 = NSTabViewItem.init(viewController: vc1)
-        tabbaritem1.toolTip = "blah tooltip"
         
-        let storyboard = NSStoryboard(name: "Main", bundle: nil)
-        let vc2 = storyboard.instantiateController(withIdentifier: YDStoryboardIdentifier.ydfoobarvc) as! NSViewController
-        let tabbaritem2 = NSTabViewItem.init(viewController: vc2)
+        nTabResults.append(a)
+        nTabResults.append(b)
+        nTabResults.append(c)
         
-        tabvc.addTabViewItem(tabbaritem1)
-        tabvc.addTabViewItem(tabbaritem2)
+        for i in nTabResults {
+            let vc = YDplainVC(nibName: YDNibIdentifier.ydplainvc, bundle: nil)
+            vc.tableViewData = i.logs
+            let tabbaritem = NSTabViewItem.init(viewController: vc)
+            tabbaritem.label = i.title
+            tabbaritem.toolTip = "blah tooltip"
+            
+            tabvc.addTabViewItem(tabbaritem)
+        }
+ 
         self.presentAsModalWindow(tabvc)
     }
 }
