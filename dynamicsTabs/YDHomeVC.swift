@@ -4,33 +4,32 @@ class YDHomeVC: NSViewController {
     
     @IBAction func btn_action(_ sender: Any) {
 
-        let a = YDResultsModel(title: "scary", logs: [11: "Camel",
-                                                      12: "Wolf",
-                                                      13: "Giant Huntsmen"])
-
-        let b = YDResultsModel(title: "non scary", logs: [1: "Harvestman",
-                                                      13: "Daddy Long Legs",
-                                                      21: "Inchy Wincy"])
-
-        let c = YDResultsModel(title: "killers", logs: [20: "Brasilian Wandering",
-                                                      13: "Shelob",
-                                                      21: "Funnel Web"])
+        var a = YDSpidersFearFactor([5: "Wolf", 1: "Huntsmen", 3: "Wandering", 2: "Trapdoor"])
+        a.elements.append((1, "Redback"))
+        a.elements.reverse()
+        let b = YDSpidersFearFactor([5: "Black Widow", 1: "Moustache", 3: "Baboon", 2: "Harvestman"])
         
-        var nTabResults: [YDResultsModel] = []
+        let x = YDTabModel(title: "scary", results: a)
+        let y = YDTabModel(title: "spitters", results: b)
+        
+        
+ 
+        var nTabResults: [YDTabModel] = []
+        
         let tabvc = YDtabvc(nibName: YDNibIdentifier.ydtabvc, bundle: nil)
-
-        nTabResults.append(a)
-        nTabResults.append(b)
-        nTabResults.append(c)
+        nTabResults.append(x)
+        nTabResults.append(y)
+        
         
         for i in nTabResults {
             let vc = YDplainVC(nibName: YDNibIdentifier.ydplainvc, bundle: nil)
-            vc.tableViewData = i.logs
+            vc.tableViewData = i.results
+            
             let tabbaritem = NSTabViewItem.init(viewController: vc)
             tabbaritem.label = i.title           
             tabvc.addTabViewItem(tabbaritem)
         }
- 
+        
         self.presentAsModalWindow(tabvc)
     }
 }

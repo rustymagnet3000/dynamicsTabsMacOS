@@ -13,6 +13,8 @@
 		0F442F4C22E7423E00228C18 /* YDplainvc.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0F442F4A22E7423E00228C18 /* YDplainvc.xib */; };
 		0F442F4E22E7596C00228C18 /* YDtabvc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F442F4D22E7596C00228C18 /* YDtabvc.swift */; };
 		0F442F5022E75BB500228C18 /* YDidentifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F442F4F22E75BB500228C18 /* YDidentifiers.swift */; };
+		0F50660D22F405BD007669EF /* YDtableHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F50660C22F405BD007669EF /* YDtableHeaderCell.swift */; };
+		0F50660F22F40DDD007669EF /* YDtableHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F50660E22F40DDD007669EF /* YDtableHeaderView.swift */; };
 		0F9D3C9822E6FFB800D4801C /* YDAppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F9D3C9722E6FFB800D4801C /* YDAppDelegate.swift */; };
 		0F9D3C9C22E6FFB800D4801C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0F9D3C9B22E6FFB800D4801C /* Assets.xcassets */; };
 		0F9D3C9F22E6FFB800D4801C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0F9D3C9D22E6FFB800D4801C /* Main.storyboard */; };
@@ -25,8 +27,10 @@
 		0F442F4622E73DE100228C18 /* YDtabvc.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = YDtabvc.xib; sourceTree = "<group>"; };
 		0F442F4922E7423E00228C18 /* YDplainVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YDplainVC.swift; sourceTree = "<group>"; };
 		0F442F4A22E7423E00228C18 /* YDplainvc.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = YDplainvc.xib; sourceTree = "<group>"; };
-		0F442F4D22E7596C00228C18 /* YDtabvc.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = YDtabvc.swift; path = ../../../.Trash/YDtabvc.swift; sourceTree = "<group>"; };
+		0F442F4D22E7596C00228C18 /* YDtabvc.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YDtabvc.swift; sourceTree = "<group>"; };
 		0F442F4F22E75BB500228C18 /* YDidentifiers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YDidentifiers.swift; sourceTree = "<group>"; };
+		0F50660C22F405BD007669EF /* YDtableHeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YDtableHeaderCell.swift; sourceTree = "<group>"; };
+		0F50660E22F40DDD007669EF /* YDtableHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YDtableHeaderView.swift; sourceTree = "<group>"; };
 		0F9D3C9422E6FFB800D4801C /* dynamicsTabs.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = dynamicsTabs.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0F9D3C9722E6FFB800D4801C /* YDAppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YDAppDelegate.swift; sourceTree = "<group>"; };
 		0F9D3C9B22E6FFB800D4801C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -73,6 +77,8 @@
 				0F442F4D22E7596C00228C18 /* YDtabvc.swift */,
 				0F442F4F22E75BB500228C18 /* YDidentifiers.swift */,
 				0F442F4922E7423E00228C18 /* YDplainVC.swift */,
+				0F50660E22F40DDD007669EF /* YDtableHeaderView.swift */,
+				0F50660C22F405BD007669EF /* YDtableHeaderCell.swift */,
 				0F442F4A22E7423E00228C18 /* YDplainvc.xib */,
 				0F9D3CA822E6FFEB00D4801C /* YDWindow.swift */,
 				0F9D3C9722E6FFB800D4801C /* YDAppDelegate.swift */,
@@ -158,6 +164,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0F50660D22F405BD007669EF /* YDtableHeaderCell.swift in Sources */,
 				0F442F4222E70E5900228C18 /* YDHomeVC.swift in Sources */,
 				0F9D3CAF22E7001100D4801C /* YDResultsModel.swift in Sources */,
 				0F9D3C9822E6FFB800D4801C /* YDAppDelegate.swift in Sources */,
@@ -165,6 +172,7 @@
 				0F442F4E22E7596C00228C18 /* YDtabvc.swift in Sources */,
 				0F9D3CA922E6FFEB00D4801C /* YDWindow.swift in Sources */,
 				0F442F5022E75BB500228C18 /* YDidentifiers.swift in Sources */,
+				0F50660F22F40DDD007669EF /* YDtableHeaderView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
