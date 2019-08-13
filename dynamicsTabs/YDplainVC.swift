@@ -3,31 +3,38 @@ import Cocoa
 class YDplainVC: NSViewController {
 
     @IBOutlet weak var tableOutlet: NSTableView!
-
     var tableViewData: YDSpidersFearFactor = YDSpidersFearFactor([:])
-    var pastiestring = "foobar pastiestring"
    
     override func viewDidLoad() {
         super.viewDidLoad()
         tableOutlet.usesAlternatingRowBackgroundColors = true
+        tableOutlet.allowsColumnResizing = true
+        tableOutlet.intercellSpacing = NSSize(width: 10, height: 15)
+        tableOutlet.allowsMultipleSelection = true
         tableOutlet.delegate = self
         tableOutlet.dataSource = self
         tableOutlet.tableColumns[0].title = "Line"
         tableOutlet.tableColumns[1].title = "Details"
         
         tableOutlet.target = self
-        tableOutlet.doubleAction = #selector(tableViewDoubleClick(_:))
-
+        tableOutlet.doubleAction = #selector(ydTableviewDoubleClick(_:))
+        
+        let a = NSPoint(x: 10, y: 10)
+        let b = tableOutlet.canDragRows(with: tableOutlet.selectedRowIndexes, at: a)
     }
-    
-    @objc func tableViewDoubleClick(_ sender:AnyObject) {
-        guard tableOutlet.selectedRow >= 0 else {
-            return
-        }
-        var a = tableViewData.elements[tableOutlet.selectedRow]
 
-        NSPasteboard.general.clearContents()
-        NSPasteboard.general.writeObjects([a.1 as NSPasteboardWriting])
+    
+    @objc func ydTableviewDoubleClick(_ sender:AnyObject) {
+
+        tableOutlet.hideRows(at: tableOutlet.selectedRowIndexes, withAnimation: .slideDown)
+        
+        var a: [String] = []
+        for i in tableOutlet.selectedRowIndexes {
+            a.append(tableViewData.elements[i].1)
+        }
+        
+//        NSPasteboard.general.clearContents()
+//        NSPasteboard.general.writeObjects(a as [NSPasteboardWriting])
         // a.1.write(fileURL?.absoluteString ?? "oops")
         
     }
@@ -35,7 +42,6 @@ class YDplainVC: NSViewController {
 
 extension YDplainVC: NSTableViewDataSource, NSTableViewDelegate {
     
-
     func tableView(_ tableView: NSTableView, shouldSelectRow row: Int) -> Bool {
         return true
     }
@@ -89,7 +95,7 @@ extension YDplainVC: NSPasteboardWriting {
         
         switch type {
         case .string:
-            plist = pastiestring
+            plist = "foobar"
         default:
             plist = nil
         }

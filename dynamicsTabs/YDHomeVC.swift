@@ -1,17 +1,17 @@
 import Cocoa
 
 class YDHomeVC: NSViewController {
+
     
     @IBAction func btn_action(_ sender: Any) {
 
-        var a = YDSpidersFearFactor([5: "Wolf", 1: "Huntsmen", 3: "Wandering", 2: "Trapdoor"])
+        var a = YDSpidersFearFactor([5: "Wolf", 1: "Huntsmen", 3: "Wandering", 2: "Trapdoor", 2: "House", 100: "Shelob", 37: "Crab"])
         a.elements.append((1, "Redback"))
         a.elements.reverse()
         let b = YDSpidersFearFactor([5: "Black Widow", 1: "Moustache", 3: "Baboon", 2: "Harvestman"])
         
         let x = YDTabModel(title: "scary", results: a)
         let y = YDTabModel(title: "spitters", results: b)
-        
         
  
         var nTabResults: [YDTabModel] = []
@@ -29,7 +29,8 @@ class YDHomeVC: NSViewController {
             tabbaritem.label = i.title           
             tabvc.addTabViewItem(tabbaritem)
         }
+
+        self.present(tabvc, asPopoverRelativeTo: self.view.frame, of: self.view, preferredEdge: .minY, behavior: .transient)
         
-        self.presentAsModalWindow(tabvc)
     }
 }

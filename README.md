@@ -1,4 +1,14 @@
 # macOS Dynamics TabViewController
+### Things to Add
+M demo was able to dynamically create a `NSTabViewController` and populate with any number of `NSViewControllers`.  Next step was to enjoy some of the macOS APIs and subclass some interesting Apple Classes.
+
+```
+Drag and Drop rows
+Copy rows to Pasteboard like a pro
+Add custom Gestures
+Use the Menu Bar
+```
+
 ### Design thoughts
 I  focused on `NSTabBarViewController` and `NSTableView` to help a user skip between lots of data.  As this project grew older, I would move to newer U.I. controls like macOS's `Tabbed Windows`.
 
@@ -8,6 +18,27 @@ Everytime I worked on the UI I really had to keep this project small.  The more 
 ### Technical baggage
 I originally thought in pure iOS terms. I was constantly trying to port `Classes` I knew well (`UIViewController`, `UITabBarViewController`) to the macOS world (`NSViewController`, `NSTabBarViewController`).  That idea drowned quickly.  Just look at the richness of the macOS `NSTableView` control to understand why you can't treat these `Classes` as synonyms of each other.
 
+
+# Fun APIs
+### Popover ViewController that disappears
+```
+self.present(tabvc, asPopoverRelativeTo: self.view.frame, of: self.view, preferredEdge: .minY, behavior: .transient)
+```
+### Hide rows
+```
+tableOutlet.hideRows(at: tableOutlet.selectedRowIndexes, withAnimation: .slideDown)
+```
+### Table properties
+```
+tableOutlet.tableColumns[0].title = "Foobar"
+tableOutlet.usesAlternatingRowBackgroundColors = true
+tableOutlet.allowsColumnResizing = true
+```
+### Drag and Drop rows
+```
+let a = NSPoint(x: 10, y: 10)
+let b = tableOutlet.canDragRows(with: tableOutlet.selectedRowIndexes, at: a)
+```
 ### Copy rows
 The amount of documentation on NSPasteboard was lacking.  But you could find great stuff on github:
 ```
