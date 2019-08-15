@@ -4,7 +4,7 @@ class YDplainVC: NSViewController {
 
     @IBOutlet weak var tableOutlet: NSTableView!
     var tableViewData: YDSpidersFearFactor = YDSpidersFearFactor([:])
-   let accountPasteboardType = NSPasteboard.PasteboardType(rawValue: "mymoney.account")
+    let accountPasteboardType = NSPasteboard.PasteboardType(rawValue: "random.fooBar")
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -17,31 +17,18 @@ class YDplainVC: NSViewController {
         tableOutlet.dataSource = self
         tableOutlet.tableColumns[0].title = "Line"
         tableOutlet.tableColumns[1].title = "Details"
-        
-        
         tableOutlet.registerForDraggedTypes([accountPasteboardType])
-        
         tableOutlet.target = self
         tableOutlet.doubleAction = #selector(ydTableviewDoubleClick(_:))
-        
-        let a = NSPoint(x: 10, y: 10)
-        let b = tableOutlet.canDragRows(with: tableOutlet.selectedRowIndexes, at: a)
     }
-
     
     @objc func ydTableviewDoubleClick(_ sender:AnyObject) {
 
         tableOutlet.hideRows(at: tableOutlet.selectedRowIndexes, withAnimation: .slideDown)
-        
         var a: [String] = []
         for i in tableOutlet.selectedRowIndexes {
             a.append(tableViewData.elements[i].1)
         }
-        
-//        NSPasteboard.general.clearContents()
-//        NSPasteboard.general.writeObjects(a as [NSPasteboardWriting])
-        // a.1.write(fileURL?.absoluteString ?? "oops")
-        
     }
 }
 
@@ -69,9 +56,9 @@ extension YDplainVC: NSTableViewDataSource, NSTableViewDelegate {
     func tableView(_ tableView: NSTableView, acceptDrop info: NSDraggingInfo, row: Int, dropOperation: NSTableView.DropOperation) -> Bool {
         guard
             let item = info.draggingPasteboard.pasteboardItems?.first,
-            let theString = item.string(forType: accountPasteboardType),
-            let account = tableViewData.elements[row].0.first(where: { $0 == "H" }),
-            let originalRow = tableViewData.elements[row].1.firstIndex(of: account)
+            let str = item.string(forType: accountPasteboardType),
+            let account = tableViewData.elements.first(where: { $0.1 == str }),
+            let originalRow = tableViewData.elements.firstIndex(where: { $0.1 == account.1 })
         else {
             return false
         }

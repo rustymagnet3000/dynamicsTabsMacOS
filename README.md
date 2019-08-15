@@ -35,7 +35,10 @@ tableOutlet.usesAlternatingRowBackgroundColors = true
 tableOutlet.allowsColumnResizing = true
 ```
 ### Drag and Drop rows
-Inspired by: `https://samwize.com/2018/11/27/drag-and-drop-to-reorder-nstableview/`
+Inspired by: 
+```https://samwize.com/2018/11/27/drag-and-drop-to-reorder-nstableview/
+https://stackoverflow.com/questions/2121907/drag-drop-reorder-rows-on-nstableview/52368491#52368491
+```
 ```
 let a = NSPoint(x: 10, y: 10)
 let b = tableOutlet.canDragRows(with: tableOutlet.selectedRowIndexes, at: a)
