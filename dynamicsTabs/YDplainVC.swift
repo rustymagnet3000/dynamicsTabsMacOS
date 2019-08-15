@@ -4,9 +4,11 @@ class YDplainVC: NSViewController {
 
     @IBOutlet weak var tableOutlet: NSTableView!
     var tableViewData: YDSpidersFearFactor = YDSpidersFearFactor([:])
-   
+   let accountPasteboardType = NSPasteboard.PasteboardType(rawValue: "mymoney.account")
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        tableOutlet.headerView = YDtableHeaderView()
         tableOutlet.usesAlternatingRowBackgroundColors = true
         tableOutlet.allowsColumnResizing = true
         tableOutlet.intercellSpacing = NSSize(width: 10, height: 15)
@@ -15,6 +17,9 @@ class YDplainVC: NSViewController {
         tableOutlet.dataSource = self
         tableOutlet.tableColumns[0].title = "Line"
         tableOutlet.tableColumns[1].title = "Details"
+        
+        
+        tableOutlet.registerForDraggedTypes([accountPasteboardType])
         
         tableOutlet.target = self
         tableOutlet.doubleAction = #selector(ydTableviewDoubleClick(_:))
@@ -46,6 +51,42 @@ extension YDplainVC: NSTableViewDataSource, NSTableViewDelegate {
         return true
     }
     
+    func tableView(_ tableView: NSTableView, pasteboardWriterForRow row: Int) -> NSPasteboardWriting? {
+        let spider = tableViewData.elements[row]
+        let pasteboardItem = NSPasteboardItem()
+        pasteboardItem.setString(spider.1, forType: accountPasteboardType)
+        return pasteboardItem
+    }
+    
+    func tableView(_ tableView: NSTableView, validateDrop info: NSDraggingInfo, proposedRow row: Int, proposedDropOperation dropOperation: NSTableView.DropOperation) -> NSDragOperation {
+        if dropOperation == .above {
+            return .move
+        } else {
+            return []
+        }
+    }
+    
+    func tableView(_ tableView: NSTableView, acceptDrop info: NSDraggingInfo, row: Int, dropOperation: NSTableView.DropOperation) -> Bool {
+        guard
+            let item = info.draggingPasteboard.pasteboardItems?.first,
+            let theString = item.string(forType: accountPasteboardType),
+            let account = tableViewData.elements[row].0.first(where: { $0 == "H" }),
+            let originalRow = tableViewData.elements[row].1.firstIndex(of: account)
+        else {
+            return false
+        }
+        
+        var newRow = row
+        if originalRow < newRow {
+            newRow = row - 1
+        }
+
+        tableView.beginUpdates()
+        tableView.moveRow(at: originalRow, to: row)
+        tableView.endUpdates()
+        return true
+    }
+        
     fileprivate enum CellIdentifiers {
         static let keyCell = "keyColumn"
         static let valueCell = "valueColumn"
@@ -59,6 +100,7 @@ extension YDplainVC: NSTableViewDataSource, NSTableViewDelegate {
         return tableViewData.elements.count
     }
 
+    
     func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
         
         
@@ -85,22 +127,3 @@ extension YDplainVC: NSTableViewDataSource, NSTableViewDelegate {
 }
 
 
-extension YDplainVC: NSPasteboardWriting {
-    func writableTypes(for pasteboard: NSPasteboard) -> [NSPasteboard.PasteboardType] {
-        return [.string]
-    }
-    
-    func pasteboardPropertyList(forType type: NSPasteboard.PasteboardType) -> Any? {
-        let plist: Any?
-        
-        switch type {
-        case .string:
-            plist = "foobar"
-        default:
-            plist = nil
-        }
-        
-        return plist
-    }
-    
-}
