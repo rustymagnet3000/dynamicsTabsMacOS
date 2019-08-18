@@ -3,7 +3,7 @@
 M demo was able to dynamically create a `NSTabViewController` and populate with any number of `NSViewControllers`.  Next step was to enjoy some of the macOS APIs and subclass some interesting Apple Classes.
 
 ```
-Drag and Drop rows
+~Drag and Drop rows~
 Copy rows to Pasteboard like a pro
 Add custom Gestures
 Use the Menu Bar
@@ -34,11 +34,13 @@ tableOutlet.tableColumns[0].title = "Foobar"
 tableOutlet.usesAlternatingRowBackgroundColors = true
 tableOutlet.allowsColumnResizing = true
 ```
-### Drag and Drop rows
-Inspired by: 
+### Drag and Drop multiple rows
+This was tricky. Old, rusty APIs that had no obvious way to find the "originalIndex" of a Row.
 ```https://samwize.com/2018/11/27/drag-and-drop-to-reorder-nstableview/
+https://stackoverflow.com/questions/2121907/drag-drop-reorder-rows-on-nstableview/2135977#2135977
 https://stackoverflow.com/questions/2121907/drag-drop-reorder-rows-on-nstableview/52368491#52368491
 ```
+
 ```
 let a = NSPoint(x: 10, y: 10)
 let b = tableOutlet.canDragRows(with: tableOutlet.selectedRowIndexes, at: a)

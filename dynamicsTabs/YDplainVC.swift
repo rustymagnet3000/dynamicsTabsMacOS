@@ -25,16 +25,28 @@ class YDplainVC: NSViewController {
     @objc func ydTableviewDoubleClick(_ sender:AnyObject) {
 
         tableOutlet.hideRows(at: tableOutlet.selectedRowIndexes, withAnimation: .slideDown)
-        var a: [String] = []
-        for i in tableOutlet.selectedRowIndexes {
-            a.append(tableViewData.elements[i].1)
-        }
     }
 }
 
 extension YDplainVC: NSTableViewDataSource, NSTableViewDelegate {
     
     func tableView(_ tableView: NSTableView, shouldSelectRow row: Int) -> Bool {
+        return true
+    }
+    
+    func tableView(_ tableView: NSTableView, writeRowsWith rowIndexes: IndexSet, to pboard: NSPasteboard) -> Bool {
+        
+        do {
+            let data = try NSKeyedArchiver.archivedData(withRootObject: rowIndexes, requiringSecureCoding: false)
+            pboard.declareTypes([accountPasteboardType], owner: self)
+            pboard.setData(data, forType: accountPasteboardType)
+        }
+        catch {
+            return false
+        }
+        
+        
+        
         return true
     }
     
@@ -54,23 +66,42 @@ extension YDplainVC: NSTableViewDataSource, NSTableViewDelegate {
     }
     
     func tableView(_ tableView: NSTableView, acceptDrop info: NSDraggingInfo, row: Int, dropOperation: NSTableView.DropOperation) -> Bool {
-        guard
-            let item = info.draggingPasteboard.pasteboardItems?.first,
-            let str = item.string(forType: accountPasteboardType),
-            let account = tableViewData.elements.first(where: { $0.1 == str }),
-            let originalRow = tableViewData.elements.firstIndex(where: { $0.1 == account.1 })
-        else {
-            return false
-        }
         
-        var newRow = row
-        if originalRow < newRow {
-            newRow = row - 1
-        }
+        var oldIndexes = [Int]()
 
+        info.enumerateDraggingItems(options: NSDraggingItemEnumerationOptions.concurrent,
+                                            for: tableView,
+                                            classes: [NSPasteboardItem.self],
+                                            searchOptions: [:],
+                                            using: {(draggingItem, idx, stop) in
+                                            
+                                                if let str = (draggingItem.item as! NSPasteboardItem).string(forType: self.accountPasteboardType) {
+                                                    
+                                                    let account = self.tableViewData.elements.first(where: { $0.1 == str })
+                                                    
+                                                    if let originalRow = self.tableViewData.elements.firstIndex(where: { $0.1 == account!.1 }) {
+                                                      oldIndexes.append(originalRow)
+                                                    }
+                                                }
+        })
+        
+        var oldIndexOffset = 0
+        var newIndexOffset = 0
+        
         tableView.beginUpdates()
-        tableView.moveRow(at: originalRow, to: row)
+        for oldIndex in oldIndexes {
+            if oldIndex < row {
+                tableView.moveRow(at: oldIndex + oldIndexOffset, to: row - 1)
+                oldIndexOffset -= 1
+            } else {
+                tableView.moveRow(at: oldIndex, to: row + newIndexOffset)
+                newIndexOffset += 1
+            }
+        }
         tableView.endUpdates()
+        
+
+
         return true
     }
         
