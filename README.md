@@ -40,7 +40,7 @@ This was tricky. Old, rusty APIs that had no obvious way to find the "originalIn
 https://stackoverflow.com/questions/2121907/drag-drop-reorder-rows-on-nstableview/2135977#2135977
 https://stackoverflow.com/questions/2121907/drag-drop-reorder-rows-on-nstableview/52368491#52368491
 ```
-
+https://www.natethompson.io/2019/03/23/nstableview-drag-and-drop.html
 ```
 let a = NSPoint(x: 10, y: 10)
 let b = tableOutlet.canDragRows(with: tableOutlet.selectedRowIndexes, at: a)

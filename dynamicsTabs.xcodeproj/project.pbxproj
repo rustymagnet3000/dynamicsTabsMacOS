@@ -20,6 +20,7 @@
 		0F9D3C9F22E6FFB800D4801C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0F9D3C9D22E6FFB800D4801C /* Main.storyboard */; };
 		0F9D3CA922E6FFEB00D4801C /* YDWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F9D3CA822E6FFEB00D4801C /* YDWindow.swift */; };
 		0F9D3CAF22E7001100D4801C /* YDResultsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F9D3CAE22E7001100D4801C /* YDResultsModel.swift */; };
+		0FDF90C9230B37CA00885D02 /* YDPasteboardUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FDF90C8230B37CA00885D02 /* YDPasteboardUtil.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +41,7 @@
 		0F9D3CA722E6FFE000D4801C /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		0F9D3CA822E6FFEB00D4801C /* YDWindow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YDWindow.swift; sourceTree = "<group>"; };
 		0F9D3CAE22E7001100D4801C /* YDResultsModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YDResultsModel.swift; sourceTree = "<group>"; };
+		0FDF90C8230B37CA00885D02 /* YDPasteboardUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YDPasteboardUtil.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,9 +78,10 @@
 				0F442F4622E73DE100228C18 /* YDtabvc.xib */,
 				0F442F4D22E7596C00228C18 /* YDtabvc.swift */,
 				0F442F4F22E75BB500228C18 /* YDidentifiers.swift */,
-				0F442F4922E7423E00228C18 /* YDplainVC.swift */,
 				0F50660E22F40DDD007669EF /* YDtableHeaderView.swift */,
 				0F50660C22F405BD007669EF /* YDtableHeaderCell.swift */,
+				0F442F4922E7423E00228C18 /* YDplainVC.swift */,
+				0FDF90C8230B37CA00885D02 /* YDPasteboardUtil.swift */,
 				0F442F4A22E7423E00228C18 /* YDplainvc.xib */,
 				0F9D3CA822E6FFEB00D4801C /* YDWindow.swift */,
 				0F9D3C9722E6FFB800D4801C /* YDAppDelegate.swift */,
@@ -168,6 +171,7 @@
 				0F442F4222E70E5900228C18 /* YDHomeVC.swift in Sources */,
 				0F9D3CAF22E7001100D4801C /* YDResultsModel.swift in Sources */,
 				0F9D3C9822E6FFB800D4801C /* YDAppDelegate.swift in Sources */,
+				0FDF90C9230B37CA00885D02 /* YDPasteboardUtil.swift in Sources */,
 				0F442F4B22E7423E00228C18 /* YDplainVC.swift in Sources */,
 				0F442F4E22E7596C00228C18 /* YDtabvc.swift in Sources */,
 				0F9D3CA922E6FFEB00D4801C /* YDWindow.swift in Sources */,

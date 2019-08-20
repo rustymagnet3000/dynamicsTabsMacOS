@@ -5,7 +5,7 @@ class YDHomeVC: NSViewController {
     
     @IBAction func btn_action(_ sender: Any) {
 
-        var a = YDSpidersFearFactor([5: "Wolf", 1: "Huntsmen", 3: "Wandering", 2: "Trapdoor", 2: "House", 100: "Shelob", 37: "Crab"])
+        var a = YDSpidersFearFactor([5: "Wolf", 1: "Huntsmen", 3: "Wandering", 2: "Trapdoor", 12: "Crab", 2: "House", 100: "Shelob", 37: "Crab"])
         a.elements.append((1, "Redback"))
         a.elements.reverse()
         let b = YDSpidersFearFactor([5: "Black Widow", 1: "Moustache", 3: "Baboon", 2: "Harvestman"])

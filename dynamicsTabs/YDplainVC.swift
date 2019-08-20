@@ -4,7 +4,6 @@ class YDplainVC: NSViewController {
 
     @IBOutlet weak var tableOutlet: NSTableView!
     var tableViewData: YDSpidersFearFactor = YDSpidersFearFactor([:])
-    let accountPasteboardType = NSPasteboard.PasteboardType(rawValue: "random.fooBar")
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -17,7 +16,8 @@ class YDplainVC: NSViewController {
         tableOutlet.dataSource = self
         tableOutlet.tableColumns[0].title = "Line"
         tableOutlet.tableColumns[1].title = "Details"
-        tableOutlet.registerForDraggedTypes([accountPasteboardType])
+        tableOutlet.registerForDraggedTypes([.string, .YDPasteboardType])
+        tableOutlet.setDraggingSourceOperationMask([.copy, .delete], forLocal: false)
         tableOutlet.target = self
         tableOutlet.doubleAction = #selector(ydTableviewDoubleClick(_:))
     }
@@ -28,7 +28,13 @@ class YDplainVC: NSViewController {
     }
 }
 
-extension YDplainVC: NSTableViewDataSource, NSTableViewDelegate {
+extension YDplainVC: NSTableViewDelegate {
+    func tableView(_ tableView: NSTableView, heightOfRow row: Int) -> CGFloat {
+        return 25
+    }
+}
+
+extension YDplainVC: NSTableViewDataSource {
     
     func tableView(_ tableView: NSTableView, shouldSelectRow row: Int) -> Bool {
         return true
@@ -38,23 +44,18 @@ extension YDplainVC: NSTableViewDataSource, NSTableViewDelegate {
         
         do {
             let data = try NSKeyedArchiver.archivedData(withRootObject: rowIndexes, requiringSecureCoding: false)
-            pboard.declareTypes([accountPasteboardType], owner: self)
-            pboard.setData(data, forType: accountPasteboardType)
+            pboard.declareTypes([.YDPasteboardType], owner: self)
+            pboard.setData(data, forType: .YDPasteboardType)
         }
         catch {
             return false
         }
         
-        
-        
         return true
     }
     
     func tableView(_ tableView: NSTableView, pasteboardWriterForRow row: Int) -> NSPasteboardWriting? {
-        let spider = tableViewData.elements[row]
-        let pasteboardItem = NSPasteboardItem()
-        pasteboardItem.setString(spider.1, forType: accountPasteboardType)
-        return pasteboardItem
+        return YDPasteboardWriter(detail: tableViewData.elements[row].1, at: row)
     }
     
     func tableView(_ tableView: NSTableView, validateDrop info: NSDraggingInfo, proposedRow row: Int, proposedDropOperation dropOperation: NSTableView.DropOperation) -> NSDragOperation {
@@ -67,28 +68,13 @@ extension YDplainVC: NSTableViewDataSource, NSTableViewDelegate {
     
     func tableView(_ tableView: NSTableView, acceptDrop info: NSDraggingInfo, row: Int, dropOperation: NSTableView.DropOperation) -> Bool {
         
-        var oldIndexes = [Int]()
+        guard let items = info.draggingPasteboard.pasteboardItems else { return false }
+        let oldIndexes: [Int] = items.compactMap{ $0.integer(forType: .YDPasteboardType) }
 
-        info.enumerateDraggingItems(options: NSDraggingItemEnumerationOptions.concurrent,
-                                            for: tableView,
-                                            classes: [NSPasteboardItem.self],
-                                            searchOptions: [:],
-                                            using: {(draggingItem, idx, stop) in
-                                            
-                                                if let str = (draggingItem.item as! NSPasteboardItem).string(forType: self.accountPasteboardType) {
-                                                    
-                                                    let account = self.tableViewData.elements.first(where: { $0.1 == str })
-                                                    
-                                                    if let originalRow = self.tableViewData.elements.firstIndex(where: { $0.1 == account!.1 }) {
-                                                      oldIndexes.append(originalRow)
-                                                    }
-                                                }
-        })
-        
+        tableView.beginUpdates()
         var oldIndexOffset = 0
         var newIndexOffset = 0
         
-        tableView.beginUpdates()
         for oldIndex in oldIndexes {
             if oldIndex < row {
                 tableView.moveRow(at: oldIndex + oldIndexOffset, to: row - 1)
@@ -99,9 +85,6 @@ extension YDplainVC: NSTableViewDataSource, NSTableViewDelegate {
             }
         }
         tableView.endUpdates()
-        
-
-
         return true
     }
         
@@ -110,10 +93,6 @@ extension YDplainVC: NSTableViewDataSource, NSTableViewDelegate {
         static let valueCell = "valueColumn"
     }
     
-    @objc override func copy() -> Any {
-        print("copy my line")
-        return "blah"
-    }
     func numberOfRows(in tableView: NSTableView) -> Int {
         return tableViewData.elements.count
     }
