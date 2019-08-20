@@ -1,23 +1,6 @@
 # macOS Dynamics TabViewController
 ### Things to Add
-M demo was able to dynamically create a `NSTabViewController` and populate with any number of `NSViewControllers`.  Next step was to enjoy some of the macOS APIs and subclass some interesting Apple Classes.
-
-```
-~Drag and Drop rows~
-Copy rows to Pasteboard like a pro
-Add custom Gestures
-Use the Menu Bar
-```
-
-### Design thoughts
-I  focused on `NSTabBarViewController` and `NSTableView` to help a user skip between lots of data.  As this project grew older, I would move to newer U.I. controls like macOS's `Tabbed Windows`.
-
-### Keep it small stupid
-Everytime I worked on the UI I really had to keep this project small.  The more complex it became, the longer it took to do simple things.
-
-### Technical baggage
-I originally thought in pure iOS terms. I was constantly trying to port `Classes` I knew well (`UIViewController`, `UITabBarViewController`) to the macOS world (`NSViewController`, `NSTabBarViewController`).  That idea drowned quickly.  Just look at the richness of the macOS `NSTableView` control to understand why you can't treat these `Classes` as synonyms of each other.
-
+I started writing this `macOS` demo to dynamically create a `NSTabViewController` with any number of `NSViewControllers`.  But I kept using the project to explore Apple Classes.
 
 # Fun APIs
 ### Popover ViewController that disappears
@@ -28,31 +11,37 @@ self.present(tabvc, asPopoverRelativeTo: self.view.frame, of: self.view, preferr
 ```
 tableOutlet.hideRows(at: tableOutlet.selectedRowIndexes, withAnimation: .slideDown)
 ```
-### Table properties
+### Simple Table properties
 ```
 tableOutlet.tableColumns[0].title = "Foobar"
 tableOutlet.usesAlternatingRowBackgroundColors = true
 tableOutlet.allowsColumnResizing = true
 ```
 ### Drag and Drop multiple rows
-This was tricky. Old, rusty APIs that had no obvious way to find the "originalIndex" of a Row.
-```https://samwize.com/2018/11/27/drag-and-drop-to-reorder-nstableview/
-https://stackoverflow.com/questions/2121907/drag-drop-reorder-rows-on-nstableview/2135977#2135977
-https://stackoverflow.com/questions/2121907/drag-drop-reorder-rows-on-nstableview/52368491#52368491
+This was tricky as there were so many poor answers when dragging multiple rows.  I eventually found all answers in here:
 ```
 https://www.natethompson.io/2019/03/23/nstableview-drag-and-drop.html
 ```
-let a = NSPoint(x: 10, y: 10)
-let b = tableOutlet.canDragRows(with: tableOutlet.selectedRowIndexes, at: a)
-```
-### Copy rows
-The amount of documentation on NSPasteboard was lacking.  But you could find great stuff on github:
-```
-https://github.com/JxbSir/Teambition-Inc/blob/3c07c8e7c723e67c52985a8d6b4ec81e090c5249/Teambition/Task/Content/TaskBaseViewController.swift
+For a long time, I could not understand how to find the original indexes of dragged rows.
 
-https://github.com/brentsimmons/NetNewsWire/blob/70312aa75c15a18a8dcaf14ad15679e4a15c3403/Shared/SmartFeeds/SmartFeedPasteboardWriter.swift
+```
+func tableView(_ tableView: NSTableView, acceptDrop info: NSDraggingInfo, row: Int, dropOperation: NSTableView.DropOperation) -> Bool {
 
-https://github.com/nakajijapan/teiten/blob/a4490c142ee1e67faa5ca294cea03b4b3f1810a8/teiten/Classes/FileEntity.swift
+guard let items = info.draggingPasteboard.pasteboardItems else { return false }
+let oldIndexes: [Int] = items.compactMap{ $0.integer(forType: .YDPasteboardType) }
+```
+### Drag rows to Trash
+This was simple than I expected.
+```
+tableOutlet.setDraggingSourceOperationMask([.copy, .delete], forLocal: false)
+
+
+func tableView(_ tableView: NSTableView, draggingSession session: NSDraggingSession, endedAt screenPoint: NSPoint, operation: NSDragOperation) {
+if operation == .delete
+.....
+....
+...
+..
 ```
 ### Writing the User Interface
 I wanted to write all of the code. I didn't want `XIB` files or `Storyboards`.  But at some point, you find writing everything is code is hardwork.  macOS is poorly documented compared to iOS.  Small things become slow and cumbersome.  

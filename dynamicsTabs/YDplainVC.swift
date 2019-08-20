@@ -28,16 +28,26 @@ class YDplainVC: NSViewController {
     }
 }
 
-extension YDplainVC: NSTableViewDelegate {
+extension YDplainVC: NSTableViewDelegate, NSTableViewDataSource {
+    
     func tableView(_ tableView: NSTableView, heightOfRow row: Int) -> CGFloat {
         return 25
     }
-}
-
-extension YDplainVC: NSTableViewDataSource {
     
     func tableView(_ tableView: NSTableView, shouldSelectRow row: Int) -> Bool {
         return true
+    }
+    
+    func tableView(_ tableView: NSTableView, draggingSession session: NSDraggingSession, endedAt screenPoint: NSPoint, operation: NSDragOperation) {
+        if operation == .delete,
+            let items = session.draggingPasteboard.pasteboardItems
+        {
+            let indexes = items.compactMap {
+                $0.integer(forType: .YDPasteboardType)
+            }
+
+            tableView.removeRows(at: IndexSet(indexes), withAnimation: .slideUp)
+        }
     }
     
     func tableView(_ tableView: NSTableView, writeRowsWith rowIndexes: IndexSet, to pboard: NSPasteboard) -> Bool {
@@ -59,11 +69,18 @@ extension YDplainVC: NSTableViewDataSource {
     }
     
     func tableView(_ tableView: NSTableView, validateDrop info: NSDraggingInfo, proposedRow row: Int, proposedDropOperation dropOperation: NSTableView.DropOperation) -> NSDragOperation {
-        if dropOperation == .above {
-            return .move
+
+        
+        guard dropOperation == .above else { return [] }
+        
+        if let source = info.draggingSource as? NSTableView,
+            source === tableView
+        {
+            tableView.draggingDestinationFeedbackStyle = .gap
         } else {
-            return []
+            tableView.draggingDestinationFeedbackStyle = .regular
         }
+        return .move
     }
     
     func tableView(_ tableView: NSTableView, acceptDrop info: NSDraggingInfo, row: Int, dropOperation: NSTableView.DropOperation) -> Bool {
