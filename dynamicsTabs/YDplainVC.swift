@@ -23,7 +23,6 @@ class YDplainVC: NSViewController {
     }
     
     @objc func ydTableviewDoubleClick(_ sender:AnyObject) {
-
         tableOutlet.hideRows(at: tableOutlet.selectedRowIndexes, withAnimation: .slideDown)
     }
 }

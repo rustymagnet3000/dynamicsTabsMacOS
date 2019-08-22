@@ -1,18 +1,42 @@
 import Cocoa
 
 @NSApplicationMain
-class AppDelegate: NSObject, NSApplicationDelegate {
+class YDAppDelegate: NSObject, NSApplicationDelegate {
 
+    let statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.squareLength)
+    
+    
+    func applicationDidFinishLaunching(_ notification: Notification) {
+        
+        let wc = NSWindowController(windowNibName: "YDOriginalWindow")
+        guard let window = wc.window else {
+            exit(99)
+        }
+        NSApp.runModal(for: window)
 
+        let mainMenu = NSMenu(title:"MainMenu")
+        
+        
+        var menuItem = mainMenu.addItem(withTitle:"Application", action:nil, keyEquivalent:"")
+        var submenu = NSMenu(title:"Application")
+        populateApplicationMenu(submenu)
+        mainMenu.setSubmenu(submenu, for:menuItem)
 
-    func applicationDidFinishLaunching(_ aNotification: Notification) {
-        // Insert code here to initialize your application
+        NSApp.mainMenu = mainMenu
+        
     }
-
-    func applicationWillTerminate(_ aNotification: Notification) {
-        // Insert code here to tear down your application
+    private func populateApplicationMenu(_ menu:NSMenu) {
+        var title = NSLocalizedString("About", comment:"About menu item") + " " + "foobar"
+        var menuItem = menu.addItem(withTitle:title, action:#selector(NSApplication.orderFrontStandardAboutPanel(_:)), keyEquivalent:"")
+        menuItem.target = NSApp
+        
+        menu.addItem(NSMenuItem.separator())
+        
+        
     }
-
-
+    
+    @objc func saySomething() {
+        print("whoop")
+    }
 }
 

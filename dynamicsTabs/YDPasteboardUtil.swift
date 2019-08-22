@@ -26,7 +26,7 @@ class YDPasteboardWriter: NSObject, NSPasteboardWriting {
 }
 
 extension NSPasteboard.PasteboardType {
-    static let YDPasteboardType = NSPasteboard.PasteboardType("random.fooBar")
+    static let YDPasteboardType = NSPasteboard.PasteboardType("YD.random.fooBar")
 }
 
 extension NSPasteboardItem {

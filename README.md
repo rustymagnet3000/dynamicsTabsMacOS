@@ -43,6 +43,11 @@ if operation == .delete
 ...
 ..
 ```
+### Removing Storyboards from Project
+I struggled with this piece.
+```
+https://pinkstone.co.uk/how-to-create-a-macos-project-without-storyboards-in-xcode-8/
+```
 ### Writing the User Interface
 I wanted to write all of the code. I didn't want `XIB` files or `Storyboards`.  But at some point, you find writing everything is code is hardwork.  macOS is poorly documented compared to iOS.  Small things become slow and cumbersome.  
 
