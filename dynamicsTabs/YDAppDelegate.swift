@@ -4,15 +4,10 @@ import Cocoa
 class YDAppDelegate: NSObject, NSApplicationDelegate {
 
     let statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.squareLength)
-    
+    @IBOutlet weak var window: NSWindow!
     
     func applicationDidFinishLaunching(_ notification: Notification) {
         
-        let wc = NSWindowController(windowNibName: "YDOriginalWindow")
-        guard let window = wc.window else {
-            exit(99)
-        }
-        NSApp.runModal(for: window)
 
         let mainMenu = NSMenu(title:"MainMenu")
         
@@ -37,6 +32,9 @@ class YDAppDelegate: NSObject, NSApplicationDelegate {
     
     @objc func saySomething() {
         print("whoop")
+    }
+    @IBAction func saySomething(_ sender: Any) {
+        print("whoop 2")
     }
 }
 

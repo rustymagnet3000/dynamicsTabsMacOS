@@ -44,9 +44,15 @@ if operation == .delete
 ..
 ```
 ### Removing Storyboards from Project
-I struggled with this piece.
+I struggled with this piece. The following articles helped. 
+
+Issue 1: I started to "right click" in the MainMenu.xib file on the `FileOwners` to compare a working app and my app. I had a missing connection to the `AppDelegate`.
+
 ```
 https://pinkstone.co.uk/how-to-create-a-macos-project-without-storyboards-in-xcode-8/
+https://jameshfisher.com/2017/03/20/how-is-mainmenu-xib-loaded/
+
+https://jameshfisher.com/2017/03/20/how-is-mainmenu-xib-loaded/
 ```
 ### Writing the User Interface
 I wanted to write all of the code. I didn't want `XIB` files or `Storyboards`.  But at some point, you find writing everything is code is hardwork.  macOS is poorly documented compared to iOS.  Small things become slow and cumbersome.  

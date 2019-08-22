@@ -5,10 +5,18 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <customObject id="-2" userLabel="File's Owner" customClass="NSApplication"/>
+        <customObject id="-2" userLabel="File's Owner" customClass="NSApplication">
+            <connections>
+                <outlet property="delegate" destination="GqJ-ej-1JV" id="zta-rm-EOy"/>
+            </connections>
+        </customObject>
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
-        <customObject id="GqJ-ej-1JV" customClass="YDAppDelegate" customModule="dynamicsTabs" customModuleProvider="target"/>
+        <customObject id="GqJ-ej-1JV" customClass="YDAppDelegate" customModule="dynamicsTabs" customModuleProvider="target">
+            <connections>
+                <outlet property="window" destination="8Yl-3K-q5k" id="ZyY-gO-0gd"/>
+            </connections>
+        </customObject>
         <customObject id="YLy-65-1bz" customClass="NSFontManager"/>
         <menu title="Main Menu" systemMenu="main" id="AYu-sK-qS6">
             <items>
@@ -694,9 +702,6 @@
                     <constraint firstItem="kMf-VK-VVv" firstAttribute="centerX" secondItem="akk-M0-7km" secondAttribute="centerX" id="g2Y-lG-JCA"/>
                 </constraints>
             </view>
-            <connections>
-                <outlet property="delegate" destination="GqJ-ej-1JV" id="ySl-qe-wqg"/>
-            </connections>
             <point key="canvasLocation" x="224" y="356"/>
         </window>
     </objects>
