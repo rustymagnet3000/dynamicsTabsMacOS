@@ -10,8 +10,6 @@
 		0F1F6E47230D948000A1F23D /* YDMainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0F1F6E46230D948000A1F23D /* YDMainMenu.xib */; };
 		0F1F6E49230D97AE00A1F23D /* YDMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F1F6E48230D97AE00A1F23D /* YDMenu.swift */; };
 		0F1F6E6A230DC03600A1F23D /* YDWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F1F6E68230DC03600A1F23D /* YDWindowController.swift */; };
-		0F1F6E6F230DC4DD00A1F23D /* YDHomeVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0F1F6E6E230DC4DD00A1F23D /* YDHomeVC.xib */; };
-		0F442F4222E70E5900228C18 /* YDHomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F442F4122E70E5900228C18 /* YDHomeVC.swift */; };
 		0F442F4822E73DE100228C18 /* YDtabvc.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0F442F4622E73DE100228C18 /* YDtabvc.xib */; };
 		0F442F4B22E7423E00228C18 /* YDplainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F442F4922E7423E00228C18 /* YDplainVC.swift */; };
 		0F442F4C22E7423E00228C18 /* YDplainvc.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0F442F4A22E7423E00228C18 /* YDplainvc.xib */; };
@@ -29,8 +27,6 @@
 		0F1F6E46230D948000A1F23D /* YDMainMenu.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = YDMainMenu.xib; sourceTree = "<group>"; };
 		0F1F6E48230D97AE00A1F23D /* YDMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YDMenu.swift; sourceTree = "<group>"; };
 		0F1F6E68230DC03600A1F23D /* YDWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YDWindowController.swift; sourceTree = "<group>"; };
-		0F1F6E6E230DC4DD00A1F23D /* YDHomeVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = YDHomeVC.xib; sourceTree = "<group>"; };
-		0F442F4122E70E5900228C18 /* YDHomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YDHomeVC.swift; sourceTree = "<group>"; };
 		0F442F4622E73DE100228C18 /* YDtabvc.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = YDtabvc.xib; sourceTree = "<group>"; };
 		0F442F4922E7423E00228C18 /* YDplainVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YDplainVC.swift; sourceTree = "<group>"; };
 		0F442F4A22E7423E00228C18 /* YDplainvc.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = YDplainvc.xib; sourceTree = "<group>"; };
@@ -90,8 +86,6 @@
 				0F1F6E48230D97AE00A1F23D /* YDMenu.swift */,
 				0F1F6E46230D948000A1F23D /* YDMainMenu.xib */,
 				0F9D3C9722E6FFB800D4801C /* YDAppDelegate.swift */,
-				0F442F4122E70E5900228C18 /* YDHomeVC.swift */,
-				0F1F6E6E230DC4DD00A1F23D /* YDHomeVC.xib */,
 				0F9D3CAE22E7001100D4801C /* YDResultsModel.swift */,
 				0F1F6E68230DC03600A1F23D /* YDWindowController.swift */,
 				0F9D3C9B22E6FFB800D4801C /* Assets.xcassets */,
@@ -161,7 +155,6 @@
 			files = (
 				0F442F4C22E7423E00228C18 /* YDplainvc.xib in Resources */,
 				0F1F6E47230D948000A1F23D /* YDMainMenu.xib in Resources */,
-				0F1F6E6F230DC4DD00A1F23D /* YDHomeVC.xib in Resources */,
 				0F442F4822E73DE100228C18 /* YDtabvc.xib in Resources */,
 				0F9D3C9C22E6FFB800D4801C /* Assets.xcassets in Resources */,
 			);
@@ -176,7 +169,6 @@
 			files = (
 				0F50660D22F405BD007669EF /* YDtableHeaderCell.swift in Sources */,
 				0F1F6E6A230DC03600A1F23D /* YDWindowController.swift in Sources */,
-				0F442F4222E70E5900228C18 /* YDHomeVC.swift in Sources */,
 				0F9D3CAF22E7001100D4801C /* YDResultsModel.swift in Sources */,
 				0F1F6E49230D97AE00A1F23D /* YDMenu.swift in Sources */,
 				0F9D3C9822E6FFB800D4801C /* YDAppDelegate.swift in Sources */,

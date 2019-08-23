@@ -18,7 +18,11 @@ tableOutlet.usesAlternatingRowBackgroundColors = true
 tableOutlet.allowsColumnResizing = true
 ```
 ### Drag and Drop multiple rows
-This was tricky as there were so many poor answers when dragging multiple rows.  I eventually found all answers in here:
+This was tricky as there were so many poor answers when dragging multiple rows.  
+
+![multiple_rows_delete_rows](readme_images/drag_rows_delete_rows.gif)
+
+I eventually found all answers in here:
 ```
 https://www.natethompson.io/2019/03/23/nstableview-drag-and-drop.html
 ```
@@ -44,15 +48,17 @@ if operation == .delete
 ..
 ```
 ### Removing Storyboards from Project
-I struggled with this piece. The following articles helped. 
+I struggled with this . The following articles helped.
 
 Issue 1: I started to "right click" in the MainMenu.xib file on the `FileOwners` to compare a working app and my app. I had a missing connection to the `AppDelegate`.
 
+Issue 2: I never saw the MainMenu.  Always the Window but never the menu.  This was due to a small setting inside `Info.plist` called `Application is agent (UIElement) = YES`.
+
+Issue 3: I could not `Open` the file without xCode versus a blank Xib only app that had been created with XCode.
 ```
 https://pinkstone.co.uk/how-to-create-a-macos-project-without-storyboards-in-xcode-8/
 https://jameshfisher.com/2017/03/20/how-is-mainmenu-xib-loaded/
 
-https://jameshfisher.com/2017/03/20/how-is-mainmenu-xib-loaded/
 ```
 ### Writing the User Interface
 I wanted to write all of the code. I didn't want `XIB` files or `Storyboards`.  But at some point, you find writing everything is code is hardwork.  macOS is poorly documented compared to iOS.  Small things become slow and cumbersome.  
