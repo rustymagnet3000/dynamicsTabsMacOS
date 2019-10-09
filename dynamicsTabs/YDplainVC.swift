@@ -20,7 +20,6 @@ class YDplainVC: NSViewController {
         tableOutlet.setDraggingSourceOperationMask([.copy, .delete], forLocal: false)
         tableOutlet.target = self
         tableOutlet.doubleAction = #selector(ydTableviewDoubleClick(_:))
-        
     }
     
     @objc func ydTableviewDoubleClick(_ sender:AnyObject) {
@@ -114,13 +113,10 @@ extension YDplainVC: NSTableViewDelegate, NSTableViewDataSource {
         return tableViewData.elements.count
     }
 
-    
     func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
-        
         
         var cellIdentifier: String = ""
         var cellText: String = "default"
-        
 
         if tableColumn == tableView.tableColumns[0] {
             cellIdentifier = CellIdentifiers.keyCell
