@@ -20,6 +20,7 @@ class YDplainVC: NSViewController {
         tableOutlet.setDraggingSourceOperationMask([.copy, .delete], forLocal: false)
         tableOutlet.target = self
         tableOutlet.doubleAction = #selector(ydTableviewDoubleClick(_:))
+        
     }
     
     @objc func ydTableviewDoubleClick(_ sender:AnyObject) {
@@ -139,4 +140,25 @@ extension YDplainVC: NSTableViewDelegate, NSTableViewDataSource {
     }
 }
 
-
+extension YDplainVC {
+    func copy(sender: AnyObject?){
+        
+        var textToDisplayInPasteboard = ""
+        
+        let indexSet = self.tableOutlet.selectedRowIndexes
+        
+        for (_, rowIndex) in indexSet.enumerated() {
+            print(rowIndex)
+            
+        }
+        
+        let pasteBoard = NSPasteboard.general
+        
+        pasteBoard.clearContents()
+        
+        pasteBoard.setString(textToDisplayInPasteboard, forType:.YDPasteboardType)
+        
+        
+        
+    }
+}

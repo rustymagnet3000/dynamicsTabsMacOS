@@ -18,24 +18,27 @@ tableOutlet.usesAlternatingRowBackgroundColors = true
 tableOutlet.allowsColumnResizing = true
 ```
 ### Drag and Drop multiple rows
-This was tricky as there were so many poor answers when dragging multiple rows.  
+`stackoverflow` was filled with answers for dragging single rows and rows that had unique values.  I wanted to support dragging multiple rows that may have the same description.  
 
 ![multiple_rows_delete_rows](readme_images/drag_rows_delete_rows.gif)
 
-I eventually found all answers in here:
+The most elegant answer was here:
 ```
 https://www.natethompson.io/2019/03/23/nstableview-drag-and-drop.html
 ```
-For a long time, I could not understand how to find the original indexes of dragged rows.
-
+### Find Index of Original Row(s)
 ```
 func tableView(_ tableView: NSTableView, acceptDrop info: NSDraggingInfo, row: Int, dropOperation: NSTableView.DropOperation) -> Bool {
 
 guard let items = info.draggingPasteboard.pasteboardItems else { return false }
 let oldIndexes: [Int] = items.compactMap{ $0.integer(forType: .YDPasteboardType) }
+....
+...
+..
+.
 ```
 ### Drag rows to Trash
-This was simple than I expected.
+This was simpler than expected.
 ```
 tableOutlet.setDraggingSourceOperationMask([.copy, .delete], forLocal: false)
 
@@ -54,7 +57,11 @@ Issue 1: I started to "right click" in the MainMenu.xib file on the `FileOwners`
 
 Issue 2: I never saw the MainMenu.  Always the Window but never the menu.  This was due to a small setting inside `Info.plist` called `Application is agent (UIElement) = YES`.
 
-Issue 3: I could not `Open` the file without xCode versus a blank Xib only app that had been created with XCode.
+Issue 3: If you created an empty XIB-only macOS project, there was a line inside the `Info.plist` called `Main nib file base name`.  You had to set that to the `MainMenu.Xib` file.
+
+Issue 4: the menu appeared but the Window never appeared.  This was caused by setting the `override var windowNibName: NSNib.Name?` to the name of Menu class instead of the WindowController class.
+
+Issue 5: I could not `Open` the file without xCode.  If I opened `Terminal` and typed `open /Users/..../DerivedData/..../Debug/dynamicsTabs.app` it would fail. Inside `Console.app` I would see the error reported as: `Error #17  (os/kern) invalid right attempting to add send right to port`.  Well, it seemed related to the location of `DerivedData`.  It all worked when you copied the `dynamicsTabs.app` to the `Desktop`.
 ```
 https://pinkstone.co.uk/how-to-create-a-macos-project-without-storyboards-in-xcode-8/
 https://jameshfisher.com/2017/03/20/how-is-mainmenu-xib-loaded/

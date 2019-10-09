@@ -1,17 +1,18 @@
 import Cocoa
 
-class YDfirstWC: NSWindowController {
-
-    required init?(coder: NSCoder) {
-        super.init(coder: coder)
+class YDWindowController: NSWindowController {
+    
+    override var windowNibName: NSNib.Name? {
+        return "YDWindowController"
     }
     
     override func windowDidLoad() {
-        NSMenu.setMenuBarVisible(true)
         super.windowDidLoad()
+        print("in YDWindowController")
+
         if let ydwindow = window, let screen = window?.screen {
             
-            ydwindow.minSize = NSSize(width: 410, height: 400 )
+            ydwindow.minSize = NSSize(width: 200, height: 200 )
             
             let offsetFromLeftOfScreen: CGFloat = 300
             let offsetFromTopOfScreen: CGFloat = 300
@@ -19,6 +20,8 @@ class YDfirstWC: NSWindowController {
             let screenRect = screen.visibleFrame
             let newOriginY = screenRect.maxY - ydwindow.frame.height - offsetFromTopOfScreen
             ydwindow.setFrameOrigin(NSPoint(x: offsetFromLeftOfScreen, y: newOriginY))
+            
+            self.window = ydwindow
         }
     }
 }

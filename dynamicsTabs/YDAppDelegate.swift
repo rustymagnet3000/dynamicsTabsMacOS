@@ -4,11 +4,13 @@ import Cocoa
 class YDAppDelegate: NSObject, NSApplicationDelegate {
 
     let statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.squareLength)
-    @IBOutlet weak var window: NSWindow!
+
+    var windowcontroller:YDWindowController?
     
     func applicationDidFinishLaunching(_ notification: Notification) {
-
-        
+        let ydwindow = YDWindowController()
+        ydwindow.showWindow(self)
+        self.windowcontroller = ydwindow
     }
 
     @IBAction func loadFunVC(_ sender: Any) {
@@ -27,7 +29,6 @@ class YDAppDelegate: NSObject, NSApplicationDelegate {
         nTabResults.append(x)
         nTabResults.append(y)
         
-        
         for i in nTabResults {
             let vc = YDplainVC(nibName: YDNibIdentifier.ydplainvc, bundle: nil)
             vc.tableViewData = i.results
@@ -36,8 +37,36 @@ class YDAppDelegate: NSObject, NSApplicationDelegate {
             tabbaritem.label = i.title
             tabvc.addTabViewItem(tabbaritem)
         }
-        
         NSApp.keyWindow?.contentViewController = tabvc
+    }
+    
+    @IBAction func savePDF(_ sender: Any) {
+        print("got to savePDF")
+        let savePanel = NSSavePanel()
+        savePanel.allowedFileTypes = ["pdf"]
+//        savePanel.beginSheetModal(for: window) { (result) in
+//            if result == NSApplication.ModalResponse.OK {
+//                print("got here")
+//            }
+//        }
+    }
+    
+    @IBAction func YDcut(_ sender: Any) {
+        print("got to YDcut. Cmd+C is already mapped")
+        
+        let pasteboard = NSPasteboard.general
+        
+        pasteboard.declareTypes([.YDPasteboardType], owner: nil)
+        pasteboard.setString("Good Morning", forType: .YDPasteboardType)
+        
+        var clipboardItems: [String] = []
+        for element in pasteboard.pasteboardItems! {
+            if let str = element.string(forType: .YDPasteboardType) {
+                clipboardItems.append(str)
+            }
+        }
+        
+        print(clipboardItems)
     }
 }
 

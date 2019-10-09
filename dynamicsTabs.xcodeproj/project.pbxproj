@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0F149D01231692CE00F70225 /* YDWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0F149CFF231692CE00F70225 /* YDWindowController.xib */; };
 		0F1F6E47230D948000A1F23D /* YDMainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0F1F6E46230D948000A1F23D /* YDMainMenu.xib */; };
 		0F1F6E49230D97AE00A1F23D /* YDMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F1F6E48230D97AE00A1F23D /* YDMenu.swift */; };
 		0F1F6E6A230DC03600A1F23D /* YDWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F1F6E68230DC03600A1F23D /* YDWindowController.swift */; };
@@ -24,6 +25,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0F149CFF231692CE00F70225 /* YDWindowController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = YDWindowController.xib; sourceTree = "<group>"; };
 		0F1F6E46230D948000A1F23D /* YDMainMenu.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = YDMainMenu.xib; sourceTree = "<group>"; };
 		0F1F6E48230D97AE00A1F23D /* YDMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YDMenu.swift; sourceTree = "<group>"; };
 		0F1F6E68230DC03600A1F23D /* YDWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YDWindowController.swift; sourceTree = "<group>"; };
@@ -75,19 +77,20 @@
 		0F9D3C9622E6FFB800D4801C /* dynamicsTabs */ = {
 			isa = PBXGroup;
 			children = (
+				0F9D3C9722E6FFB800D4801C /* YDAppDelegate.swift */,
+				0F442F4F22E75BB500228C18 /* YDidentifiers.swift */,
 				0F442F4622E73DE100228C18 /* YDtabvc.xib */,
 				0F442F4D22E7596C00228C18 /* YDtabvc.swift */,
-				0F442F4F22E75BB500228C18 /* YDidentifiers.swift */,
 				0F50660E22F40DDD007669EF /* YDtableHeaderView.swift */,
 				0F50660C22F405BD007669EF /* YDtableHeaderCell.swift */,
 				0F442F4922E7423E00228C18 /* YDplainVC.swift */,
-				0FDF90C8230B37CA00885D02 /* YDPasteboardUtil.swift */,
 				0F442F4A22E7423E00228C18 /* YDplainvc.xib */,
 				0F1F6E48230D97AE00A1F23D /* YDMenu.swift */,
 				0F1F6E46230D948000A1F23D /* YDMainMenu.xib */,
-				0F9D3C9722E6FFB800D4801C /* YDAppDelegate.swift */,
-				0F9D3CAE22E7001100D4801C /* YDResultsModel.swift */,
 				0F1F6E68230DC03600A1F23D /* YDWindowController.swift */,
+				0F149CFF231692CE00F70225 /* YDWindowController.xib */,
+				0FDF90C8230B37CA00885D02 /* YDPasteboardUtil.swift */,
+				0F9D3CAE22E7001100D4801C /* YDResultsModel.swift */,
 				0F9D3C9B22E6FFB800D4801C /* Assets.xcassets */,
 				0F9D3CA022E6FFB800D4801C /* Info.plist */,
 				0F9D3CA122E6FFB900D4801C /* dynamicsTabs.entitlements */,
@@ -156,6 +159,7 @@
 				0F442F4C22E7423E00228C18 /* YDplainvc.xib in Resources */,
 				0F1F6E47230D948000A1F23D /* YDMainMenu.xib in Resources */,
 				0F442F4822E73DE100228C18 /* YDtabvc.xib in Resources */,
+				0F149D01231692CE00F70225 /* YDWindowController.xib in Resources */,
 				0F9D3C9C22E6FFB800D4801C /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

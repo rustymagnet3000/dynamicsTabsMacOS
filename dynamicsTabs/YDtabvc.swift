@@ -1,6 +1,5 @@
 import Cocoa
 
-
 class YDtabvc: NSTabViewController, NSWindowDelegate {
 
     public var size = NSSize(width: 500, height: 800)
