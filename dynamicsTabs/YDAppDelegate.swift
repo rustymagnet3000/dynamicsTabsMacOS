@@ -51,22 +51,18 @@ class YDAppDelegate: NSObject, NSApplicationDelegate {
 //        }
     }
     
-    @IBAction func YDcut(_ sender: Any) {
-        print("got to YDcut. Cmd+C is already mapped")
-        
-        let pasteboard = NSPasteboard.general
-        
-        pasteboard.declareTypes([.YDPasteboardType], owner: nil)
-        pasteboard.setString("Good Morning", forType: .YDPasteboardType)
-        
-        var clipboardItems: [String] = []
-        for element in pasteboard.pasteboardItems! {
+    @IBAction func YDcut(_ sender: NSMenuItem) {
+        print("got to YDcut. Cmd+C already mapped")
+        let pasteBoard = NSPasteboard.general
+        pasteBoard.declareTypes([.YDPasteboardType], owner: nil)
+
+        var clipboardItems: String = ""
+        for element in pasteBoard.pasteboardItems! {
             if let str = element.string(forType: .YDPasteboardType) {
                 clipboardItems.append(str)
             }
         }
-        
         print(clipboardItems)
+        pasteBoard.setString(clipboardItems, forType: .YDPasteboardType)
     }
 }
-

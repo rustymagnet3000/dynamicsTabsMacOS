@@ -13,6 +13,7 @@ class YDPasteboardWriter: NSObject, NSPasteboardWriting {
         return [.string, .YDPasteboardType]
     }
 
+    
     func pasteboardPropertyList(forType type: NSPasteboard.PasteboardType) -> Any? {
         switch type {
         case .string:

@@ -42,7 +42,7 @@ extension YDWindowController: NSTableViewDelegate {
     }
     
     func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
-        print("in delegate")
+
         var cellIdentifier: String = ""
         if tableColumn == tableView.tableColumns[0] {
             cellIdentifier = CellIdentifiers.keyCell

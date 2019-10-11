@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		0F149D01231692CE00F70225 /* YDWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0F149CFF231692CE00F70225 /* YDWindowController.xib */; };
 		0F1F6E47230D948000A1F23D /* YDMainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0F1F6E46230D948000A1F23D /* YDMainMenu.xib */; };
-		0F1F6E49230D97AE00A1F23D /* YDMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F1F6E48230D97AE00A1F23D /* YDMenu.swift */; };
 		0F1F6E6A230DC03600A1F23D /* YDWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F1F6E68230DC03600A1F23D /* YDWindowController.swift */; };
 		0F442F4822E73DE100228C18 /* YDtabvc.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0F442F4622E73DE100228C18 /* YDtabvc.xib */; };
 		0F442F4B22E7423E00228C18 /* YDplainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F442F4922E7423E00228C18 /* YDplainVC.swift */; };
@@ -27,7 +26,6 @@
 /* Begin PBXFileReference section */
 		0F149CFF231692CE00F70225 /* YDWindowController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = YDWindowController.xib; sourceTree = "<group>"; };
 		0F1F6E46230D948000A1F23D /* YDMainMenu.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = YDMainMenu.xib; sourceTree = "<group>"; };
-		0F1F6E48230D97AE00A1F23D /* YDMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YDMenu.swift; sourceTree = "<group>"; };
 		0F1F6E68230DC03600A1F23D /* YDWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YDWindowController.swift; sourceTree = "<group>"; };
 		0F442F4622E73DE100228C18 /* YDtabvc.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = YDtabvc.xib; sourceTree = "<group>"; };
 		0F442F4922E7423E00228C18 /* YDplainVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YDplainVC.swift; sourceTree = "<group>"; };
@@ -85,7 +83,6 @@
 				0F50660C22F405BD007669EF /* YDtableHeaderCell.swift */,
 				0F442F4922E7423E00228C18 /* YDplainVC.swift */,
 				0F442F4A22E7423E00228C18 /* YDplainvc.xib */,
-				0F1F6E48230D97AE00A1F23D /* YDMenu.swift */,
 				0F1F6E46230D948000A1F23D /* YDMainMenu.xib */,
 				0F1F6E68230DC03600A1F23D /* YDWindowController.swift */,
 				0F149CFF231692CE00F70225 /* YDWindowController.xib */,
@@ -174,7 +171,6 @@
 				0F50660D22F405BD007669EF /* YDtableHeaderCell.swift in Sources */,
 				0F1F6E6A230DC03600A1F23D /* YDWindowController.swift in Sources */,
 				0F9D3CAF22E7001100D4801C /* YDResultsModel.swift in Sources */,
-				0F1F6E49230D97AE00A1F23D /* YDMenu.swift in Sources */,
 				0F9D3C9822E6FFB800D4801C /* YDAppDelegate.swift in Sources */,
 				0FDF90C9230B37CA00885D02 /* YDPasteboardUtil.swift in Sources */,
 				0F442F4B22E7423E00228C18 /* YDplainVC.swift in Sources */,

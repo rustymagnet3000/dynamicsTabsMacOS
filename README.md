@@ -1,6 +1,6 @@
 # macOS Dynamics TabViewController
 ### Things to Add
-I started writing this `macOS` demo to dynamically create a `NSTabViewController` with any number of `NSViewControllers`.  But I kept using the project to explore Apple Classes.
+I wrote this `macOS` app to dynamically create a `NSTabViewController` with any number of `NSViewControllers`.  But I kept using the project to explore Apple Classes.
 
 # Fun APIs
 ### Popover ViewController that disappears
@@ -22,9 +22,10 @@ tableOutlet.allowsColumnResizing = true
 
 ![multiple_rows_delete_rows](readme_images/drag_rows_delete_rows.gif)
 
-The most elegant answer was here:
+The most elegant answers I found:
 ```
 https://www.natethompson.io/2019/03/23/nstableview-drag-and-drop.html
+https://cocoaosxrevisited.wordpress.com/2018/01/10/chapter-21-pasteboards-and-nil-targeted-actions/
 ```
 ### Find Index of Original Row(s)
 ```
@@ -32,10 +33,10 @@ func tableView(_ tableView: NSTableView, acceptDrop info: NSDraggingInfo, row: I
 
 guard let items = info.draggingPasteboard.pasteboardItems else { return false }
 let oldIndexes: [Int] = items.compactMap{ $0.integer(forType: .YDPasteboardType) }
-....
-...
-..
-.
+    ....
+    ...
+    ..
+    .
 ```
 ### Drag rows to Trash
 This was simpler than expected.
@@ -45,10 +46,10 @@ tableOutlet.setDraggingSourceOperationMask([.copy, .delete], forLocal: false)
 
 func tableView(_ tableView: NSTableView, draggingSession session: NSDraggingSession, endedAt screenPoint: NSPoint, operation: NSDragOperation) {
 if operation == .delete
-.....
-....
-...
-..
+    ....
+    ...
+    ..
+    .
 ```
 ### Removing Storyboards from Project
 I struggled with this . The following articles helped.
@@ -68,24 +69,21 @@ https://jameshfisher.com/2017/03/20/how-is-mainmenu-xib-loaded/
 
 ```
 ### Writing the User Interface
-I wanted to write all of the code. I didn't want `XIB` files or `Storyboards`.  But at some point, you find writing everything is code is hardwork.  macOS is poorly documented compared to iOS.  Small things become slow and cumbersome.  
+I wanted to write all the UI in code. I didn't want `XIB` files or `Storyboards`.  But at some point, you find coding everything is slow and hardwork.  macOS is poorly documented compared to iOS.  Small things become slow and cumbersome.  
 
-I went stepped back in time and used  `xib` files, as I had spent a lot of time with `Storyboards` in other projects.
+I stepped back in time and used  `xib` files, as I had spent a lot of time with `Storyboards` in other projects.  I planned to get more comfortable on macOS and then I would retrofit the project and remove `xib` files.
 
-I planned to get more comfortable on macOS and then I would retrofit the project and remove `xib` files.
-
-### The first breakthrough
-After reading lots of articles, I found one article that clicked:
+### "Copy" Menu item
+This sounded simple and intuitive. However, as I was dealing with `NSPasteboard` it was anything but intuitive.  I started to think I could use a single function inside the AppDelegate to tell any listening viewcontrollers that a copy request had been made.
 ```
-https://www.raywenderlich.com/613-windows-and-windowcontroller-tutorial-for-macos
+https://learnappmaking.com/notification-center-how-to-swift/
 ```
-This pointed out I could achieve what I wanted with little code and get some great side-benefits with macOS specific UI Classes.
-
-
 ### References
 ```
 // bug on NSTabViewControllers
 https://stackoverflow.com/questions/37005622/control-a-nstabviewcontroller-from-parent-view
+
+https://www.raywenderlich.com/613-windows-and-windowcontroller-tutorial-for-macos
 
 https://www.raywenderlich.com/704-macos-view-controllers-tutorial
 
